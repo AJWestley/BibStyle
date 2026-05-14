@@ -11,7 +11,9 @@ def load_bib(path):
     '''Loads the entry dictionary from a bibtex file'''
     try:
         with open(path, "r", encoding="utf-8") as f:
-            return bibtexparser.load(f).entries
+            parser = bibtexparser.bparser.BibTexParser()
+            parser.ignore_nonstandard_types = False
+            return bibtexparser.load(f, parser).entries
     except Exception as e:
         print(f"[FATAL] BibTeX parse error:\n{e}")
         sys.exit(1)
