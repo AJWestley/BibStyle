@@ -23,6 +23,15 @@ def check_entry_keys(entries):
     return issues
 
 @entry_check
+def check_entry_types(entries):
+    issues = []
+    for e in entries:
+        e_type = e.get("ENTRYTYPE", "").lower()
+        if e_type == 'all' or e_type not in compulsory_fields:
+            issues.append(error_msg(e, f"invalid entry type -> {e_type}"))
+    return issues
+
+@entry_check
 def check_fields_present(entries):
     '''Checks the minimum necessary fields are present in each entry'''
     issues = []
