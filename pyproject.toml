@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bibstyle"
+version = "1.0.0"
+description = "Personal BibTeX style checker"
+authors = [{name="AJ Westley"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ['bibtexparser']
+
+[project.scripts]
+bibstyle = "bibstyle.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+bibstyle = ["data/default_config.json"]
