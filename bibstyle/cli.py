@@ -1,4 +1,5 @@
 import sys
+from importlib.metadata import version
 from bibstyle.io import load_lines, load_bib, print_issues, check_file_exists
 from bibstyle.checker import run_checks
 from bibstyle.config import preferences
@@ -60,7 +61,10 @@ def run(path):
 
 def main():
     if len(sys.argv) == 2:
-        run(sys.argv[1])
+        if sys.argv[1] in ['--version', '-v']:
+            print(version('bibstyle'))
+        else:
+            run(sys.argv[1])
         sys.exit(0)
     
     if settings(sys.argv):
