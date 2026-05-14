@@ -28,9 +28,11 @@ There are some minor customisation options available:
 - Which fields should be present in each entry type, at minimum.
 
 
-To view the current settings, you can run
+To view or reset the current settings, you can run
 ```bash
-$ bibstyle show config
+$ bibstyle config show
+# or
+$ bibstyle config reset
 ```
 
 

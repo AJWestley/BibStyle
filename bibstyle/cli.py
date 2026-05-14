@@ -1,15 +1,18 @@
 import sys
-from bibstyle.rules import entry
-from bibstyle.rules import line
 from bibstyle.io import load_lines, load_bib, print_issues, check_file_exists
 from bibstyle.checker import run_checks
 from bibstyle.config import preferences
 
 def settings(args):
     if len(args) == 3:
-        if args[1] =='show' and args[2] == 'config':
-            preferences.print_settings()
-            return True
+        if args[1] =='config': 
+            if args[2] == 'show':
+                preferences.print_settings()
+                return True
+            elif args[2] == 'reset':
+                preferences.reset_to_default()
+                return True
+            return False
         if args[1] == 'month' and args[2] in ['name', 'number']:
             preferences.set_month_preference(args[2])
             return True
@@ -68,5 +71,6 @@ def main():
     print("\tbibstyle month 'name|number'")
     print("\tbibstyle entry add|remove|clear entry_name")
     print("\tbibstyle field add|remove entry_name 'option1|option2|...'")
-    print("\tbibstyle show config")
+    print("\tbibstyle config show")
+    print("\tbibstyle config reset")
     sys.exit(1)

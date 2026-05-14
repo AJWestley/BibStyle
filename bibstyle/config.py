@@ -83,6 +83,12 @@ class Config:
         self.settings['compulsory_fields'].pop(entry_type)
         self.update()
     
+    def reset_to_default(self):
+        """Reset the user config file back to the packaged default configuration."""
+        shutil.copy(DEFAULT_CONFIG, self.path)
+        with self.path.open("r") as conf_file:
+            self.settings = json.load(conf_file)
+    
     def print_settings(self):
         print(f"Month preference: {self.settings['month']}\n")
         for entry, fields in self.settings['compulsory_fields'].items():
