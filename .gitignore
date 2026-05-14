@@ -1,1 +1,4 @@
 /bibstyle.egg-info
+dist/
+build/
+*.egg-info/
